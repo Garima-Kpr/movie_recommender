@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome page of Movie Recommendation</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h1>MOVIE RECOMMENDER BY {{name}}</h1>
+    <img src="static/popcorn.jpeg">
+    <p>Rate five movies</p>
+
+    <form action="/recommendation">
+        {% for _ in range(5) %}
+        <input type="text" name="input" placeholder="Enter movie" list="movies" required>
+        <input type="number" name="rating" placeholder="Rate (1-5)" required min="1" max="5">
+        <br /><br />
+        {% endfor %}
+        <button type="submit">Give me some recommendations</button>
+
+    </form>
+
+    <datalist id="movies">
+        {% for movie in movies %}
+        <option value="{{movie}}"></option>
+        {% endfor %}
+    </datalist>
+    <h2>Now time to grab the popcorn!</h2>
+    <img src="static/minions.jpeg">
+
+   <!-- <a href='/recommendation'>Show recommendation</a> -->
+</body>
+</html>
